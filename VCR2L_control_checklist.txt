@@ -1,0 +1,50 @@
+what do i need to control
+
+1. Eyes direction - 8 directions 
+(neutral is dead ahead)
+
+2. Expressions
+* happy
+*angry
+*sad
+*flustered
+*scared
+*confused
+*curious
+*embarassed
+*neutral
+*horny
+*mischievous
+*etc.
+*blinking
+*other closed-eye expressions
+*asymetrical expression? 
+(2 notes -- 1st is default symmetrical,
+but if you add the 2nd note it overwrites
+the other half)
+
+3. effects (rolling illumination, 
+LED display blinking, 
+additional LED backlighting, etc.)
+
+4. Physical looking/tilting of 
+face display
+(velocity 1 - 126, 127 is poke out all the way)
+(1-126 is broken into 9 chunks of 14)
+(each chunk represents a direction)
+(1-14 is neutral resting)
+15 - 28 is left
+29 - 42 is right
+etc.
+
+all of this x2, one set of controls 
+per character
+
+
+
+NEW IDEA
+
+6DOF PID platform
+BUT sideways
+and made with lego
+epic??????

@@ -1,0 +1,31 @@
+58 notes MAX per display
+
+56 for the 4 14-segment digits,
+
+2 notes for the colon and the decimal point.
+
+1 Channel per display; 
+
+4 digits per channel.
+
+For a 4-display unit, this would mean 4 channels of MIDI.
+
+14 digits:
+
+0 - A
+1 -B
+2 -C
+3- D
+4-E
+5-F
+6-G
+7-H (left up angle)
+8-I (G2) (right-hand middle dash)
+9-J (top upright middle line)
+10-K (right up angle)
+11-L (bottom right angle)
+12-M(bottom upright middle line)
+13-N (bottom left angle)
+
+
+

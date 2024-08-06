@@ -1,0 +1,79 @@
+TO DO:
+
+Python Midi Middle-man
+
+Here is the route:
+
+1. Ableton Live / DAW / MIDI sequencer
+2. Python MMM
+3. Arduino (displays, servos, etc.)
+
+Why?
+
+1. MIDI sequences are easily
+editable AND repeatable. 
+( I don't want to program my own sequencer.)
+
+2. Python acts as TRANSLATOR and
+GENERATOR 
+-- takes in MIDI controls,
+-- is also a tool to visually create and 
+iterate upon facial expression animations
+--outputs to arduino at baud rate of at least
+38,400 bps
+
+56 bytes to update both LED display arrays
+6 bytes to update face-panel physical actuation
+8 bytes to update "legs" physical actuators
+(feature creep?)
++1 byte to denote message type
+upper nybble is message type
+lower nybble is channel
+
+~~message packet structure~~:
+
+0000_0000
+
+upper nybble: MSB denotes message type
+	(0 is update message,
+	1 is data)
+
+lower nybble: 0 - 15 denotes update type 
+	(segments update, 
+	clear digit, 
+	LED effect,
+	face-panel movement, etc.)
+
+~~~display update~~~:
+
+--- display msg type
+
+nybble: 0 - 7 denotes display number
+2 LSB: 0 - 3 denotes digit number
+
+---
+
+dword [5x 7bit chunks]: bitwise flags for multiple digits
+	(useful for sending 
+	the exact same message to
+	multiple digits at once)
+
+---
+
+14 bit number [2x7bit chunks] represents segments
+	(only sent/expected if the message
+	is segments update type)
+
+~~~physical actuation update~~~:
+
+byte : 6 lowest bits: bit flags for which servos to update
+
+for each servo to update:
+
+	read 2 bytes [2x LS nybbles]: 
+	angle from 0 to 180
+
+
+
+3. Finally, Python sends the proper data
+to the Arduino at a sufficient baud rate.
