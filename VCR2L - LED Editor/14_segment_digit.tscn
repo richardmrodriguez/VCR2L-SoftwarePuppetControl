@@ -1,0 +1,286 @@
+[gd_scene load_steps=20 format=3 uid="uid://bd8y1el7vunp7"]
+
+[ext_resource type="Texture2D" uid="uid://wew1c1y8h6yd" path="res://Sprite/14 Segment Digit.png" id="1_2lsl7"]
+[ext_resource type="Script" path="res://Scripts/14_segment_digit.gd" id="1_goa7b"]
+[ext_resource type="Script" path="res://Scripts/Segment.gd" id="3_6phkl"]
+[ext_resource type="Script" path="res://Scripts/SegmentArea.gd" id="4_1dc5x"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kvpi"]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8sb6"]
+size = Vector2(183, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qij5h"]
+size = Vector2(32, 168)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68v0a"]
+size = Vector2(32, 169)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvb0r"]
+size = Vector2(178, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l4af"]
+size = Vector2(32, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7xq3"]
+size = Vector2(34, 164)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j13hy"]
+size = Vector2(78, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81llr"]
+size = Vector2(40, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wepkk"]
+size = Vector2(32, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yn53t"]
+size = Vector2(44, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg14f"]
+size = Vector2(80, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0u450"]
+size = Vector2(42, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsumy"]
+size = Vector2(34, 142)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuvlp"]
+size = Vector2(42, 132)
+
+[node name="14 Segment Digit" type="Node2D"]
+script = ExtResource("1_goa7b")
+
+[node name="Segments" type="Node2D" parent="."]
+
+[node name="Segment 0" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(511, 131)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(156.94, 45.1589, 188.372, 35.3959)
+script = ExtResource("3_6phkl")
+segment_number = 1
+metadata/segment_number = 0
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 0"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 0/Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_i8sb6")
+
+[node name="Segment 1" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(618, 224)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(128.95, 72.7447, 35.8231, 172.129)
+script = ExtResource("3_6phkl")
+segment_number = 2
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 1"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 1/Area2D"]
+shape = SubResource("RectangleShape2D_qij5h")
+
+[node name="Segment 2" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(618, 418)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(128.95, 72.7447, 35.8231, 172.129)
+script = ExtResource("3_6phkl")
+segment_number = 3
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 2"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 2/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_68v0a")
+
+[node name="Segment 3" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(514, 512)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(156.94, 45.1589, 188.372, 35.3959)
+script = ExtResource("3_6phkl")
+segment_number = 4
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 3"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 3/Area2D"]
+shape = SubResource("RectangleShape2D_cvb0r")
+
+[node name="Segment 4" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(408, 415)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(128.95, 72.7447, 35.8231, 172.129)
+script = ExtResource("3_6phkl")
+segment_number = 5
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 4"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 4/Area2D"]
+shape = SubResource("RectangleShape2D_4l4af")
+
+[node name="Segment 5" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(409, 223)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(128.95, 72.7447, 35.8231, 172.129)
+script = ExtResource("3_6phkl")
+segment_number = 6
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 5"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 5/Area2D"]
+shape = SubResource("RectangleShape2D_t7xq3")
+
+[node name="Segment 6" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(463, 323)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(156.409, 242.697, 83.3891, 32.4043)
+script = ExtResource("3_6phkl")
+segment_number = 7
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 6"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 6/Area2D"]
+shape = SubResource("RectangleShape2D_j13hy")
+
+[node name="Segment 7" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(460, 232)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(177.626, 97.0199, 41.2148, 131.617)
+script = ExtResource("3_6phkl")
+segment_number = 8
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 7"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 7/Area2D"]
+shape = SubResource("RectangleShape2D_81llr")
+
+[node name="Segment 8" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(513, 236)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(233.555, 98.6625, 32.8502, 147.9)
+script = ExtResource("3_6phkl")
+segment_number = 9
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 8"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 8/Area2D"]
+shape = SubResource("RectangleShape2D_wepkk")
+
+[node name="Segment 9" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(563, 228)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(281.263, 98.3487, 42.5661, 130.401)
+script = ExtResource("3_6phkl")
+segment_number = 10
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 9"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 9/Area2D"]
+shape = SubResource("RectangleShape2D_yn53t")
+
+[node name="Segment 10" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(568, 324)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(156.409, 242.697, 83.3891, 32.4043)
+script = ExtResource("3_6phkl")
+segment_number = 11
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 10"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 10/Area2D"]
+shape = SubResource("RectangleShape2D_rg14f")
+
+[node name="Segment 11" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(564, 417)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(177.626, 97.0199, 41.2148, 131.617)
+script = ExtResource("3_6phkl")
+segment_number = 12
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 11"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 11/Area2D"]
+shape = SubResource("RectangleShape2D_0u450")
+
+[node name="Segment 12" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(514, 405)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(233.555, 98.6625, 32.8502, 147.9)
+script = ExtResource("3_6phkl")
+segment_number = 13
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 12"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 12/Area2D"]
+shape = SubResource("RectangleShape2D_nsumy")
+
+[node name="Segment 13" type="Sprite2D" parent="Segments"]
+material = SubResource("CanvasItemMaterial_4kvpi")
+position = Vector2(460, 416)
+texture = ExtResource("1_2lsl7")
+region_enabled = true
+region_rect = Rect2(281.263, 98.3487, 42.5661, 130.401)
+script = ExtResource("3_6phkl")
+segment_number = 14
+
+[node name="Area2D" type="Area2D" parent="Segments/Segment 13"]
+script = ExtResource("4_1dc5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segments/Segment 13/Area2D"]
+shape = SubResource("RectangleShape2D_wuvlp")
+
+[node name="Control Buttons" type="Node2D" parent="."]
+
+[node name="Load Digit" type="Button" parent="Control Buttons"]
+offset_left = 391.0
+offset_top = 49.25
+offset_right = 641.0
+offset_bottom = 80.25
+toggle_mode = true
+text = "Load Digit"
+
+[node name="Save Digit" type="Button" parent="Control Buttons"]
+offset_left = 391.0
+offset_right = 641.0
+offset_bottom = 31.0
+toggle_mode = true
+text = "Save Digit"

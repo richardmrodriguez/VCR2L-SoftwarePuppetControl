@@ -4,7 +4,7 @@ import time
 import serial
 from enum import Enum
 
-ser = serial.Serial('COM8', baudrate=115200)
+ser = serial.Serial('/dev/ttyUSB0', baudrate=115200)
 
 ## -                                            ------- TO DO --------
 ##
@@ -15,7 +15,8 @@ midi_in = rtmidi2.MidiIn()
 ports = midi_in.ports
 
 if ports:
-    midi_in.open_port("Python*")  # using loopMIDI for a virtual midi port
+    for port in ports:
+        print(port) # using loopMIDI for a virtual midi port
 else:
     print("No MIDI inputs available.")
     exit()

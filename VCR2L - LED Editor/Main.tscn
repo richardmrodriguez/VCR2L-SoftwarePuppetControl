@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpmhfi7lvmufm"]
+
+[ext_resource type="PackedScene" uid="uid://bd8y1el7vunp7" path="res://14_segment_digit.tscn" id="1_df33q"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_fgveu"]
+[ext_resource type="Script" path="res://Scripts/Main Controls.gd" id="2_04vy6"]
+[ext_resource type="Script" path="res://Scripts/MacroDropdown.gd" id="3_gi6yy"]
+[ext_resource type="Script" path="res://Scripts/FileDialog.gd" id="3_ilwwn"]
+[ext_resource type="Script" path="res://Scripts/DigitFileDialog.gd" id="4_arn4n"]
+[ext_resource type="Script" path="res://Scripts/CurrentMacroName.gd" id="4_toxss"]
+[ext_resource type="Script" path="res://Scripts/Digits.gd" id="5_e6ugy"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_fgveu")
+
+[node name="Main Controls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_04vy6")
+
+[node name="MacroDropdown" type="OptionButton" parent="Main Controls"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 32.5
+offset_right = 344.0
+offset_bottom = 94.5
+text_overrun_behavior = 4
+script = ExtResource("3_gi6yy")
+
+[node name="CurrentMacroName" type="LineEdit" parent="Main Controls/MacroDropdown"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 0.5
+offset_right = 716.0
+offset_bottom = 66.5
+theme_override_font_sizes/font_size = 25
+placeholder_text = "macro name here"
+middle_mouse_paste_enabled = false
+select_all_on_focus = true
+caret_blink = true
+script = ExtResource("4_toxss")
+
+[node name="Add New Macro" type="Button" parent="Main Controls/MacroDropdown"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 0.5
+offset_right = 322.0
+offset_bottom = 63.5
+theme_override_font_sizes/font_size = 40
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "+"
+
+[node name="Delete Current Macro" type="Button" parent="Main Controls/MacroDropdown"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 0.5
+offset_right = 404.0
+offset_bottom = 63.5
+theme_override_font_sizes/font_size = 40
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "-"
+
+[node name="FileDialog" type="FileDialog" parent="Main Controls"]
+position = Vector2i(0, 36)
+size = Vector2i(392, 162)
+always_on_top = true
+ok_button_text = "Save"
+access = 2
+root_subfolder = "C:/Users/Public"
+script = ExtResource("3_ilwwn")
+
+[node name="DigitFileDialog" type="FileDialog" parent="Main Controls"]
+script = ExtResource("4_arn4n")
+
+[node name="Digits" type="Node2D" parent="."]
+position = Vector2(752, 504)
+scale = Vector2(0.931782, 0.931782)
+script = ExtResource("5_e6ugy")
+
+[node name="14 Segment Digit" parent="Digits" instance=ExtResource("1_df33q")]
+position = Vector2(-936.366, -323.066)
+
+[node name="14 Segment Digit2" parent="Digits" instance=ExtResource("1_df33q")]
+position = Vector2(-653.7, -323.066)
+
+[node name="14 Segment Digit3" parent="Digits" instance=ExtResource("1_df33q")]
+position = Vector2(-371.033, -323.066)
+
+[node name="14 Segment Digit4" parent="Digits" instance=ExtResource("1_df33q")]
+position = Vector2(-88.3662, -323.066)
+
+[connection signal="item_selected" from="Main Controls/MacroDropdown" to="Main Controls/MacroDropdown" method="_on_item_selected"]
+[connection signal="pressed" from="Main Controls/MacroDropdown/Add New Macro" to="Main Controls" method="_on_add_new_macro_pressed"]
+[connection signal="pressed" from="Main Controls/MacroDropdown/Delete Current Macro" to="Main Controls" method="_on_delete_current_macro_pressed"]
+[connection signal="file_selected" from="Main Controls/FileDialog" to="Main Controls/FileDialog" method="_on_file_selected"]
+[connection signal="file_selected" from="Main Controls/DigitFileDialog" to="Main Controls/DigitFileDialog" method="_on_file_selected"]
