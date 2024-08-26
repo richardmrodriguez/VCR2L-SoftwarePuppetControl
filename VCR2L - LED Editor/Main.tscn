@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpmhfi7lvmufm"]
+[gd_scene load_steps=11 format=3 uid="uid://bpmhfi7lvmufm"]
 
 [ext_resource type="PackedScene" uid="uid://bd8y1el7vunp7" path="res://14_segment_digit.tscn" id="1_df33q"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_fgveu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/CurrentMacroName.gd" id="4_toxss"]
 [ext_resource type="Script" path="res://Scripts/Digits.gd" id="5_e6ugy"]
 [ext_resource type="Script" path="res://MIDI Monitor.gd" id="5_f8rm0"]
+[ext_resource type="Script" path="res://MIDI CHANNELS.gd" id="6_a8v03"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_fgveu")
@@ -73,10 +74,17 @@ script = ExtResource("5_f8rm0")
 
 [node name="Label" type="Label" parent="Main Controls/MacroDropdown/MIDI Monitor"]
 layout_mode = 0
-offset_top = 31.0
-offset_right = 120.0
-offset_bottom = 54.0
-text = "midi port: none"
+offset_left = 86.0
+offset_right = 206.0
+offset_bottom = 23.0
+text = "Channel:"
+
+[node name="MIDI CHANNELS" type="OptionButton" parent="Main Controls/MacroDropdown/MIDI Monitor"]
+layout_mode = 0
+offset_left = 160.0
+offset_right = 205.0
+offset_bottom = 21.0
+script = ExtResource("6_a8v03")
 
 [node name="FileDialog" type="FileDialog" parent="Main Controls"]
 position = Vector2i(0, 36)

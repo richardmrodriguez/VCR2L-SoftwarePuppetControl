@@ -4,7 +4,7 @@ extends Node2D
 @onready var file_dialog = get_node("Main Controls/FileDialog")
 @onready var digit_file_dialog = get_node("Main Controls/DigitFileDialog")
 
-var selected_midi_input_channel: int = 1
+var selected_midi_input_channel: int = 0
 
 var segments_dict_clipboard = {}
 var current_macros = {
@@ -118,12 +118,13 @@ func _unhandled_key_input(event):
 
 func _input(event):
 	if event is InputEventMIDI:
-		if event.message != MIDI_MESSAGE_NOTE_ON:
-			return
-		print_debug("Midi note received!")
 		if event.channel != selected_midi_input_channel:
 			return
-		if not event.pitch <= current_macros.keys().size():
+		if event.message != MIDI_MESSAGE_NOTE_ON:
+			return
+		print("Midi note received! | ", event.pitch)
+
+		if not event.pitch < current_macros.keys().size():
 			print_debug("Can't find macro for that pitch: ", event.pitch)
 			print(current_macros.keys())
 			return

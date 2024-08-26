@@ -1,4 +1,3 @@
-
 extends FileDialog
 
 @onready var main_node = get_tree().root.get_node("Main")
@@ -7,7 +6,9 @@ extends FileDialog
 
 func _ready():
 	access = FileDialog.ACCESS_FILESYSTEM
-	use_native_dialog = true
+	if OS.get_name() != "Linux":
+		use_native_dialog = true
+	filters = PackedStringArray(["*"])
 
 var window_size = {
 	"w": 960,
@@ -28,13 +29,14 @@ func _on_load_macro_shape_pressed():
 	open_load_menu("Load macro: ")
 	
 func open_save_menu(menu_text: String):
-	access = FileDialog.ACCESS_FILESYSTEM
+	#access = FileDialog.ACCESS_FILESYSTEM
 	file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	popup_centered(Vector2i(window_size["w"], window_size["h"]))
 	set_title(menu_text)
 	
 func open_load_menu(menu_text: String):
-	access = FileDialog.ACCESS_FILESYSTEM
+	clear_filters()
+	#access = FileDialog.ACCESS_FILESYSTEM
 	file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	popup_centered(Vector2i(window_size["w"], window_size["h"]))
 	set_title(menu_text)
@@ -44,7 +46,7 @@ func _on_file_selected(path):
 	var json = JSON.new()
 	
 	match file_mode:
-		FILE_MODE_OPEN_FILE: 	# JSON writes the integers as "strings", 
+		FILE_MODE_OPEN_FILE: # JSON writes the integers as "strings",
 								# which means the indexes have to be read with str()
 			var file
 			
@@ -91,7 +93,3 @@ func add__new_macro_to_file(file):
 
 func overwrite_macro_in_file(file):
 	pass
-	
-
-
-
