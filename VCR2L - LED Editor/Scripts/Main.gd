@@ -1,8 +1,10 @@
 extends Node2D
 
-@onready var digits = get_node("Digits")
+@onready var digits: Node = %Digits
 @onready var file_dialog = get_node("Main Controls/FileDialog")
 @onready var digit_file_dialog = get_node("Main Controls/DigitFileDialog")
+
+var selected_midi_input_channel: int = 1
 
 var segments_dict_clipboard = {}
 var current_macros = {
@@ -111,3 +113,16 @@ func _unhandled_key_input(event):
 				for n in macro_names:
 					print(str(num) + ": '" + n + "',")
 					num += 1
+
+# implement MIDI input lmao
+
+
+	if event is InputEventMIDI:
+		print_debug("Midi note received!")
+		if event.channel != selected_midi_input_channel:
+			return
+		var macro_dict: Dictionary = current_macros[event.pitch]
+		if not macro_dict:
+			print_debug("Couldn't find macro for midi note: ", event.pitch)
+			return
+		digits.set_all_digits_and_segments(macro_dict)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpmhfi7lvmufm"]
+[gd_scene load_steps=10 format=3 uid="uid://bpmhfi7lvmufm"]
 
 [ext_resource type="PackedScene" uid="uid://bd8y1el7vunp7" path="res://14_segment_digit.tscn" id="1_df33q"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_fgveu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/DigitFileDialog.gd" id="4_arn4n"]
 [ext_resource type="Script" path="res://Scripts/CurrentMacroName.gd" id="4_toxss"]
 [ext_resource type="Script" path="res://Scripts/Digits.gd" id="5_e6ugy"]
+[ext_resource type="Script" path="res://MIDI Monitor.gd" id="5_f8rm0"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_fgveu")
@@ -61,6 +62,22 @@ shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "-"
 
+[node name="MIDI Monitor" type="Button" parent="Main Controls/MacroDropdown"]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 0.5
+offset_right = 981.0
+offset_bottom = 31.5
+text = "MIDI"
+script = ExtResource("5_f8rm0")
+
+[node name="Label" type="Label" parent="Main Controls/MacroDropdown/MIDI Monitor"]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 120.0
+offset_bottom = 54.0
+text = "midi port: none"
+
 [node name="FileDialog" type="FileDialog" parent="Main Controls"]
 position = Vector2i(0, 36)
 size = Vector2i(392, 162)
@@ -74,20 +91,25 @@ script = ExtResource("3_ilwwn")
 script = ExtResource("4_arn4n")
 
 [node name="Digits" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(752, 504)
 scale = Vector2(0.931782, 0.931782)
 script = ExtResource("5_e6ugy")
 
 [node name="14 Segment Digit" parent="Digits" instance=ExtResource("1_df33q")]
+unique_name_in_owner = true
 position = Vector2(-936.366, -323.066)
 
 [node name="14 Segment Digit2" parent="Digits" instance=ExtResource("1_df33q")]
+unique_name_in_owner = true
 position = Vector2(-653.7, -323.066)
 
 [node name="14 Segment Digit3" parent="Digits" instance=ExtResource("1_df33q")]
+unique_name_in_owner = true
 position = Vector2(-371.033, -323.066)
 
 [node name="14 Segment Digit4" parent="Digits" instance=ExtResource("1_df33q")]
+unique_name_in_owner = true
 position = Vector2(-88.3662, -323.066)
 
 [connection signal="item_selected" from="Main Controls/MacroDropdown" to="Main Controls/MacroDropdown" method="_on_item_selected"]

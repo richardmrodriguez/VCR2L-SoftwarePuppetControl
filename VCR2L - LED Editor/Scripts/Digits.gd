@@ -10,7 +10,7 @@ func get_all_digits_and_segments():
 		
 	return digits_segments_dict
 	
-func set_all_digits_and_segments(dict):
+func set_all_digits_and_segments(dict: Dictionary):
 	var num_digits = get_child_count()
 	
 	if dict.has(0):
