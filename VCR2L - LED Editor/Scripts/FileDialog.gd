@@ -1,8 +1,13 @@
+
 extends FileDialog
 
 @onready var main_node = get_tree().root.get_node("Main")
 @onready var digits = main_node.get_node("Digits")
 @onready var macro_dropdown = get_parent().get_node("MacroDropdown")
+
+func _ready():
+	access = FileDialog.ACCESS_FILESYSTEM
+	use_native_dialog = true
 
 var window_size = {
 	"w": 960,
@@ -23,11 +28,13 @@ func _on_load_macro_shape_pressed():
 	open_load_menu("Load macro: ")
 	
 func open_save_menu(menu_text: String):
+	access = FileDialog.ACCESS_FILESYSTEM
 	file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	popup_centered(Vector2i(window_size["w"], window_size["h"]))
 	set_title(menu_text)
 	
 func open_load_menu(menu_text: String):
+	access = FileDialog.ACCESS_FILESYSTEM
 	file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	popup_centered(Vector2i(window_size["w"], window_size["h"]))
 	set_title(menu_text)

@@ -116,13 +116,22 @@ func _unhandled_key_input(event):
 
 # implement MIDI input lmao
 
-
+func _input(event):
 	if event is InputEventMIDI:
+		if event.message != MIDI_MESSAGE_NOTE_ON:
+			return
 		print_debug("Midi note received!")
 		if event.channel != selected_midi_input_channel:
 			return
-		var macro_dict: Dictionary = current_macros[event.pitch]
-		if not macro_dict:
+		if not event.pitch <= current_macros.keys().size():
+			print_debug("Can't find macro for that pitch: ", event.pitch)
+			print(current_macros.keys())
+			return
+		if current_macros.keys().is_empty():
+			print_debug("No macros loaded...")
+			return
+		var macro_dict: Dictionary = current_macros[current_macros.keys()[event.pitch]]
+		if macro_dict.is_empty():
 			print_debug("Couldn't find macro for midi note: ", event.pitch)
 			return
 		digits.set_all_digits_and_segments(macro_dict)
