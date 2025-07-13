@@ -4,11 +4,11 @@ import time
 import serial
 from enum import Enum
 
+macro_file_path = "CURRENT_MACROS"
+
 ser = serial.Serial('/dev/ttyUSB0', baudrate=115200)
 
-## -                                            ------- TO DO --------
-##
-##                                              replace rtmidi usage with rtmidi2
+
 ##
 midi_in = rtmidi2.MidiIn()
 
@@ -87,7 +87,7 @@ VCR_MIDI_CONSTANTS = {
     }
 }
 
-macro_file_path = "C:/Users/Public/MACROS V11"
+
 
 
 def send_serial_status(status, data_length=1):
