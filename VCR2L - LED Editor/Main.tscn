@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://bpmhfi7lvmufm"]
 
 [ext_resource type="PackedScene" uid="uid://bd8y1el7vunp7" path="res://14_segment_digit.tscn" id="1_df33q"]
-[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_fgveu"]
-[ext_resource type="Script" path="res://Scripts/Main Controls.gd" id="2_04vy6"]
-[ext_resource type="Script" path="res://Scripts/MacroDropdown.gd" id="3_gi6yy"]
-[ext_resource type="Script" path="res://Scripts/FileDialog.gd" id="3_ilwwn"]
-[ext_resource type="Script" path="res://Scripts/DigitFileDialog.gd" id="4_arn4n"]
-[ext_resource type="Script" path="res://Scripts/CurrentMacroName.gd" id="4_toxss"]
-[ext_resource type="Script" path="res://Scripts/Digits.gd" id="5_e6ugy"]
-[ext_resource type="Script" path="res://MIDI Monitor.gd" id="5_f8rm0"]
-[ext_resource type="Script" path="res://MIDI CHANNELS.gd" id="6_a8v03"]
+[ext_resource type="Script" uid="uid://qr6vpa08kx2f" path="res://Scripts/Main.gd" id="1_fgveu"]
+[ext_resource type="Script" uid="uid://bcsebgeyjd0pr" path="res://Scripts/Main Controls.gd" id="2_04vy6"]
+[ext_resource type="Script" uid="uid://dj5sexam3g7ld" path="res://Scripts/MacroDropdown.gd" id="3_gi6yy"]
+[ext_resource type="Script" uid="uid://dprajp4enyrgc" path="res://Scripts/FileDialog.gd" id="3_ilwwn"]
+[ext_resource type="Script" uid="uid://dupei1gw04l8f" path="res://Scripts/DigitFileDialog.gd" id="4_arn4n"]
+[ext_resource type="Script" uid="uid://bbfm47y48ylgl" path="res://Scripts/CurrentMacroName.gd" id="4_toxss"]
+[ext_resource type="Script" uid="uid://43de8r4307dx" path="res://Scripts/Digits.gd" id="5_e6ugy"]
+[ext_resource type="Script" uid="uid://cu1w8fhgil45y" path="res://MIDI Monitor.gd" id="5_f8rm0"]
+[ext_resource type="Script" uid="uid://0fbu0wef7q2u" path="res://MIDI CHANNELS.gd" id="6_a8v03"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_fgveu")
@@ -72,11 +72,13 @@ offset_bottom = 31.5
 text = "MIDI"
 script = ExtResource("5_f8rm0")
 
-[node name="Label" type="Label" parent="Main Controls/MacroDropdown/MIDI Monitor"]
+[node name="Channels" type="Label" parent="Main Controls/MacroDropdown/MIDI Monitor"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 86.0
 offset_right = 206.0
 offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "Channel:"
 
 [node name="MIDI CHANNELS" type="OptionButton" parent="Main Controls/MacroDropdown/MIDI Monitor"]
@@ -88,9 +90,8 @@ script = ExtResource("6_a8v03")
 
 [node name="FileDialog" type="FileDialog" parent="Main Controls"]
 position = Vector2i(0, 36)
-size = Vector2i(392, 162)
+size = Vector2i(392, 175)
 always_on_top = true
-ok_button_text = "Save"
 access = 2
 root_subfolder = "C:/Users/Public"
 script = ExtResource("3_ilwwn")

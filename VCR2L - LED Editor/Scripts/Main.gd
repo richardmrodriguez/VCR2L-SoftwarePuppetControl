@@ -11,6 +11,9 @@ var current_macros = {
 }
 var selected_macro = "Empty2"
 
+func _ready() -> void:
+	print_debug("Opening MIDI Inputs...")
+	OS.open_midi_inputs()
 
 func _unhandled_key_input(event):
 	# get modifier key statuses as variables

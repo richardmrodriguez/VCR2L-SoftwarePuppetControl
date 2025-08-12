@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://bd8y1el7vunp7"]
 
 [ext_resource type="Texture2D" uid="uid://wew1c1y8h6yd" path="res://Sprite/14 Segment Digit.png" id="1_2lsl7"]
-[ext_resource type="Script" path="res://Scripts/14_segment_digit.gd" id="1_goa7b"]
-[ext_resource type="Script" path="res://Scripts/Segment.gd" id="3_6phkl"]
-[ext_resource type="Script" path="res://Scripts/SegmentArea.gd" id="4_1dc5x"]
+[ext_resource type="Script" uid="uid://l14wu21kjp8u" path="res://Scripts/14_segment_digit.gd" id="1_goa7b"]
+[ext_resource type="Script" uid="uid://qeo56m45cxt3" path="res://Scripts/Segment.gd" id="3_6phkl"]
+[ext_resource type="Script" uid="uid://sjuqcsx5h2i" path="res://Scripts/SegmentArea.gd" id="4_1dc5x"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4kvpi"]
 blend_mode = 1
@@ -269,6 +269,7 @@ script = ExtResource("4_1dc5x")
 shape = SubResource("RectangleShape2D_wuvlp")
 
 [node name="Control Buttons" type="Node2D" parent="."]
+visible = false
 
 [node name="Load Digit" type="Button" parent="Control Buttons"]
 offset_left = 391.0

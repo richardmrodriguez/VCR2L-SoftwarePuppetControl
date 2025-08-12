@@ -89,14 +89,15 @@ void print_mac_address(uint8_t mac[6])
 
 void illuminate_segments_from_bytes(uint8_t bytes[])
 {
-  int new_ints[4];
+  // another 8 bits total, 2bits per digit, could be used for smthn...
+  uint16_t new_ints[4];
 
   for (int digit = 0; digit < 4; digit++)
   {
     int n1 = bytes[0 + (digit * 2)];
     int n2 = bytes[1 + (digit * 2)];
     n1 = 0b0000000011111111 & n1;
-    int concat_int = n1 | n2 << 8;
+    uint16_t concat_int = n1 | n2 << 8;
     new_ints[digit] = concat_int;
   }
 

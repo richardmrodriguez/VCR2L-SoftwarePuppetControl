@@ -6,16 +6,23 @@ from enum import Enum
 
 macro_file_path = "CURRENT_MACROS"
 
-ser = serial.Serial('/dev/ttyUSB0', baudrate=115200)
+ser = serial.Serial('/dev/ttyUSB1', baudrate=115200)
+
+available_ports = rtmidi2.get_in_ports()
+
 
 
 ##
-midi_in = rtmidi2.MidiIn()
+print("opening ports...")
+midi_in = rtmidi2.MidiIn
+print(midi_in.open_port())
 
 ports = midi_in.ports
 
 if ports:
+    print("printing ports...")
     for port in ports:
+        print
         print(port) # using loopMIDI for a virtual midi port
 else:
     print("No MIDI inputs available.")
@@ -179,26 +186,45 @@ def handle_midi_cc_motor_control(midi_msg):
                        data_list=motors_bytes_array,
                        data_len=2)
 
+print(midi_in.callback)
+
+def midi_callback(msg, timestamp):
+    msgtype, channel = msg[0]
+    print("oh fuck")
+
+midi_in.callback = midi_callback
+
+if midi_in.callback is not None:
+    print("hell yeah")
+    print(midi_in)
+
+    print(midi_in.callback)
 
 with open(macro_file_path) as macro_file:
     macro_data = json.load(macro_file)
 
     while True:
+        if rtmidi2.get_in_ports() != available_ports:
+            available_ports = rtmidi2.get_in_ports()
+            print(available_ports)
+        pass
         msg_and_dt = midi_in.get_message()
+        if not msg_and_dt:
+            continue
 
-        if msg_and_dt:
-            (msg, note, vel) = msg_and_dt
-            status = msg & 0b1111_0000
-            channel = msg & 0b0000_1111
-            midi_data = [note, vel]
+        (msg, note, vel) = msg_and_dt
+        status = msg & 0b1111_0000
+        channel = msg & 0b0000_1111
+        midi_data = [note, vel]
 
-            # -------- MIDI NOTES - LED SEGMENTS --------
-            if status == MIDI_COMMANDS['NOTE_ON']:
-                handle_led_segments(midi_data, channel)
-            # -------- MIDI CC - MOTORS --------
-            elif status == rtmidi2.CC and midi_data[1]:
-                # Control 123 gets set to zero when stopping playback. ignore 123 and 121
-                handle_midi_cc_motor_control(midi_data)
+        # -------- MIDI NOTES - LED SEGMENTS --------
+        if status == MIDI_COMMANDS['NOTE_ON']:
+            print("Note recieved!", midi_data, channel)
+            handle_led_segments(midi_data, channel)
+        # -------- MIDI CC - MOTORS --------
+        elif status == rtmidi2.CC and midi_data[1]:
+            # Control 123 gets set to zero when stopping playback. ignore 123 and 121
+            handle_midi_cc_motor_control(midi_data)
 
         #arduino_msg = ser.readline().decode('ascii')
         #print("Arduino Serial: " + str(arduino_msg))
