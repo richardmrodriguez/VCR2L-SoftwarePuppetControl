@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://di0k8olfvjyh5"]
+
+[ext_resource type="Script" uid="uid://43de8r4307dx" path="res://Scripts/Digits.gd" id="1_m1nqc"]
+[ext_resource type="PackedScene" uid="uid://bd8y1el7vunp7" path="res://14_segment_digit.tscn" id="2_fcwuk"]
+
+[node name="Digits" type="Node2D"]
+scale = Vector2(0.931782, 0.931782)
+script = ExtResource("1_m1nqc")
+
+[node name="14 Segment Digit" parent="." instance=ExtResource("2_fcwuk")]
+unique_name_in_owner = true
+position = Vector2(-5.36606, -3.21964)
+
+[node name="14 Segment Digit2" parent="." instance=ExtResource("2_fcwuk")]
+unique_name_in_owner = true
+position = Vector2(277.3, -3.21964)
+
+[node name="14 Segment Digit3" parent="." instance=ExtResource("2_fcwuk")]
+unique_name_in_owner = true
+position = Vector2(559.967, -3.21964)
+
+[node name="14 Segment Digit4" parent="." instance=ExtResource("2_fcwuk")]
+unique_name_in_owner = true
+position = Vector2(842.634, -3.21964)

@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCR2L - LED Editor", "VCR2L - LED Editor.csproj", "{5026A7E9-9B8E-48B1-A112-C764154A442A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5026A7E9-9B8E-48B1-A112-C764154A442A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5026A7E9-9B8E-48B1-A112-C764154A442A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5026A7E9-9B8E-48B1-A112-C764154A442A}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{5026A7E9-9B8E-48B1-A112-C764154A442A}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{5026A7E9-9B8E-48B1-A112-C764154A442A}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{5026A7E9-9B8E-48B1-A112-C764154A442A}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpmhfi7lvmufm"]
+
+[ext_resource type="Script" uid="uid://qr6vpa08kx2f" path="res://Scripts/Main.gd" id="1_fgveu"]
+[ext_resource type="Script" uid="uid://bcsebgeyjd0pr" path="res://Scripts/Main Controls.gd" id="2_04vy6"]
+[ext_resource type="Script" uid="uid://dj5sexam3g7ld" path="res://Scripts/MacroDropdown.gd" id="3_gi6yy"]
+[ext_resource type="Script" uid="uid://dprajp4enyrgc" path="res://Scripts/FileDialog.gd" id="3_ilwwn"]
+[ext_resource type="Script" uid="uid://c0hhetr6iaco1" path="res://serial_port_dropdown.gd" id="3_wkp8b"]
+[ext_resource type="Script" uid="uid://dupei1gw04l8f" path="res://Scripts/DigitFileDialog.gd" id="4_arn4n"]
+[ext_resource type="Script" uid="uid://bbfm47y48ylgl" path="res://Scripts/CurrentMacroName.gd" id="4_toxss"]
+[ext_resource type="Script" uid="uid://cu1w8fhgil45y" path="res://MIDI Monitor.gd" id="5_f8rm0"]
+[ext_resource type="PackedScene" uid="uid://di0k8olfvjyh5" path="res://LED_Display.tscn" id="9_wkp8b"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_fgveu")
+
+[node name="Main Controls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_04vy6")
+
+[node name="SerialPortDropdown" type="OptionButton" parent="Main Controls"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 381.0
+offset_top = 128.0
+offset_right = 701.0
+offset_bottom = 191.0
+allow_reselect = true
+script = ExtResource("3_wkp8b")
+
+[node name="SerialPortLabel" type="Label" parent="Main Controls/SerialPortDropdown"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 106.0
+offset_top = -39.0
+offset_right = 226.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Serial Port"
+
+[node name="MacroDropdown" type="OptionButton" parent="Main Controls"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 256.0
+offset_bottom = 74.0
+text_overrun_behavior = 4
+script = ExtResource("3_gi6yy")
+
+[node name="CurrentMacroName" type="LineEdit" parent="Main Controls/MacroDropdown"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 0.5
+offset_right = 716.0
+offset_bottom = 66.5
+theme_override_font_sizes/font_size = 25
+placeholder_text = "macro name here"
+middle_mouse_paste_enabled = false
+select_all_on_focus = true
+caret_blink = true
+script = ExtResource("4_toxss")
+
+[node name="Add New Macro" type="Button" parent="Main Controls/MacroDropdown"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 0.5
+offset_right = 322.0
+offset_bottom = 63.5
+theme_override_font_sizes/font_size = 40
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "+"
+
+[node name="Delete Current Macro" type="Button" parent="Main Controls/MacroDropdown"]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 4.0
+offset_right = 393.0
+offset_bottom = 67.0
+theme_override_font_sizes/font_size = 40
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "-"
+
+[node name="MIDI Monitor" type="Button" parent="Main Controls/MacroDropdown"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 121.0
+offset_right = 306.0
+offset_bottom = 177.0
+theme_override_font_sizes/font_size = 24
+text = "MIDI"
+script = ExtResource("5_f8rm0")
+
+[node name="Channels" type="Label" parent="Main Controls/MacroDropdown/MIDI Monitor"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 94.0
+offset_top = -39.0
+offset_right = 167.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Status"
+
+[node name="FileDialog" type="FileDialog" parent="Main Controls"]
+position = Vector2i(0, 36)
+size = Vector2i(1265, 660)
+always_on_top = true
+min_size = Vector2i(760, 660)
+access = 2
+root_subfolder = "C:/Users/Public"
+use_native_dialog = true
+script = ExtResource("3_ilwwn")
+
+[node name="DigitFileDialog" type="FileDialog" parent="Main Controls"]
+size = Vector2i(705, 625)
+min_size = Vector2i(705, 625)
+use_native_dialog = true
+script = ExtResource("4_arn4n")
+
+[node name="Digits" parent="." instance=ExtResource("9_wkp8b")]
+unique_name_in_owner = true
+position = Vector2(49, 220)
+scale = Vector2(0.582, 0.582)
+
+[node name="Digits2" parent="." instance=ExtResource("9_wkp8b")]
+unique_name_in_owner = true
+position = Vector2(49, 645)
+scale = Vector2(0.582, 0.582)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="item_selected" from="Main Controls/MacroDropdown" to="Main Controls/MacroDropdown" method="_on_item_selected"]
+[connection signal="pressed" from="Main Controls/MacroDropdown/Add New Macro" to="Main Controls" method="_on_add_new_macro_pressed"]
+[connection signal="pressed" from="Main Controls/MacroDropdown/Delete Current Macro" to="Main Controls" method="_on_delete_current_macro_pressed"]
+[connection signal="file_selected" from="Main Controls/FileDialog" to="Main Controls/FileDialog" method="_on_file_selected"]
+[connection signal="file_selected" from="Main Controls/DigitFileDialog" to="Main Controls/DigitFileDialog" method="_on_file_selected"]
